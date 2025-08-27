@@ -106,7 +106,7 @@ This workflow is designed to be **strict and stingy with points**. Candidates ar
 
 - Their projects are not directly related to AI/ML.
 - They lack practical deployment or MLOps knowledge.
-- They studied at universities outside the **preferred list**.
+- Their project experienced outside the **preferred list**.
 - Their resume suffers from poor grammar or unprofessional design.
 
 -----

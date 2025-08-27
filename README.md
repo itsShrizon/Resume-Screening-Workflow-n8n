@@ -1,4 +1,4 @@
-# 📄 Resume Screening Workflow (n8n)
+# 📄 Resume Screening Workflow 
 
 This workflow automates the process of fetching resumes from **Google Drive**, analyzing them with **Google Gemini**, and recording the results in **Google Sheets**.
 It is designed for screening AI Engineer candidates based on a **strict HR scoring rubric**.

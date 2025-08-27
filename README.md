@@ -8,14 +8,19 @@ This workflow automates fetching resumes from **Google Drive**, analyzing them w
 
 **👆 Click to see the workflow in action!**
 
-<a href="https://www.youtube.com/watch?v=1QE4AMowVls" target="_blank" style="position: relative; display: inline-block;">
-<img src="https://drive.google.com/uc?export=view&id=1HhEIx13JS3q4pi79Jc3XwqSc51qS7Do4" alt="🎬 CLICK TO WATCH: Resume Screening Workflow Demo" width="700" style="border: 3px solid #ff0000; border-radius: 8px; cursor: pointer;" />
-<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background-color: rgba(255, 0, 0, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
-<div style="width: 0; height: 0; border-left: 25px solid white; border-top: 15px solid transparent; border-bottom: 15px solid transparent; margin-left: 8px;"></div>
-</div>
-</a>
+[![🎬 CLICK TO WATCH: Resume Screening Workflow Demo](https://drive.google.com/uc?export=view&id=1HhEIx13JS3q4pi79Jc3XwqSc51qS7Do4)](https://www.youtube.com/watch?v=1QE4AMowVls)
 
-**▶️ [Watch Full Demo on YouTube](https://www.youtube.com/watch?v=1QE4AMowVls)** *(3 minutes)*
+**▶️ [🎥 WATCH FULL DEMO ON YOUTUBE](https://www.youtube.com/watch?v=1QE4AMowVls)** *(3 minutes)*
+
+*Click the image above to watch the complete workflow demonstration*
+
+## 📊 Results: Filtered Candidates Output
+
+**See how deserving candidates get automatically filtered based on their scores!**
+
+![Candidate Screening Results](https://drive.google.com/uc?export=view&id=1lrt4ortJM7xM-N9VQbIduQeO943rt0-K)
+
+*The Google Sheet automatically populates with candidate data, scores, and detailed reasoning - making it easy to identify top talent at a glance.*
 
 -----
 

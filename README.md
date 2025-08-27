@@ -4,9 +4,15 @@ This workflow automates fetching resumes from **Google Drive**, analyzing them w
 
 <br>
 
+## 🎥 Watch the Demo Video
+
+**👆 Click to see the workflow in action!**
+
 <a href="https://www.youtube.com/watch?v=1QE4AMowVls" target="_blank">
-<img src="https://i.ytimg.com/vi/1QE4AMowVls/maxresdefault.jpg" alt="Workflow Demo Video" width="700" border="10" />
+<img src="https://i.ytimg.com/vi/1QE4AMowVls/maxresdefault.jpg" alt="🎬 CLICK TO WATCH: Resume Screening Workflow Demo" width="700" style="border: 3px solid #ff0000; border-radius: 8px; cursor: pointer;" />
 </a>
+
+**▶️ [Watch Full Demo on YouTube](https://www.youtube.com/watch?v=1QE4AMowVls)** *(3 minutes)*
 
 -----
 

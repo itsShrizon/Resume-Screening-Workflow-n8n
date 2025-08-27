@@ -1,143 +1,121 @@
 # 📄 Resume Screening Workflow 
 
-This workflow automates the process of fetching resumes from **Google Drive**, analyzing them with **Google Gemini**, and recording the results in **Google Sheets**.
-It is designed for screening AI Engineer candidates based on a **strict HR scoring rubric**.
+This workflow automates fetching resumes from **Google Drive**, analyzing them with **Google Gemini** and **ChatGPT 5o**, and recording the results in **Google Sheets**. It is specifically designed for screening **AI Engineer** candidates based on a strict HR scoring rubric.
 
----
+\<br\>
+
+\<a href="[https://www.youtube.com/watch?v=1QE4AMowVls](https://www.youtube.com/watch?v=1QE4AMowVls)" target="\_blank"\>
+\<img src="[https://i.ytimg.com/vi/1QE4AMowVls/maxresdefault.jpg](https://www.google.com/search?q=https://i.ytimg.com/vi/1QE4AMowVls/maxresdefault.jpg)" alt="Workflow Demo Video" width="700" border="10" /\>
+\</a\>
+
+-----
 
 ## ⚙️ Workflow Overview
 
-The workflow performs the following steps:
+The workflow executes the following automated steps:
 
-1. **Trigger**
+1.  **🚀 Trigger**:
 
-   * Starts manually when you click **Execute Workflow** in n8n.
+      * Starts manually when you click **Execute Workflow** in n8n.
 
-2. **Fetch Files from Google Drive**
+2.  **📂 Fetch Files from Google Drive**:
 
-   * Searches a specified Google Drive folder for resumes.
-   * Gets the latest file.
+      * Searches a specified Google Drive folder for resumes and retrieves the latest file.
 
-3. **Download File**
+3.  **📥 Download File**:
 
-   * Downloads the candidate’s resume.
+      * Downloads the candidate’s resume for processing.
 
-4. **Analyze Resume with Google Gemini**
+4.  **🧠 Analyze Resume with Google Gemini**:
 
-   * Extracts:
+      * **Extracts Key Information**:
+          * Candidate Name
+          * Email Address
+          * University
+          * Years of Experience
+      * **Scores based on a 100-point rubric**:
+          * **Experience** (20 pts)
+          * **Projects** (30 pts)
+          * **Technical Skills** (30 pts)
+          * **Relevancy** (20 pts)
+      * **Applies Deductions For**:
+          * Grammar, design, or authenticity issues.
+          * Illogical or invalid claims.
+          * Incomplete educational qualifications.
 
-     * Candidate name
-     * Email
-     * University
-     * Years of experience
-   * Scores based on a **100-point rubric**:
+5.  **✅ Validate JSON Output**:
 
-     * **Experience** (20 pts)
-     * **Projects** (30 pts)
-     * **Technical Skills** (30 pts)
-     * **Relevancy** (20 pts)
-   
-   * Applies deductions for:
+      * Uses a `Switch` + `Code` node to ensure Gemini's output is **valid JSON** and cleans the response if necessary.
 
-     * Grammar, design, authenticity
-     * Illogical or invalid claims
-     * Incomplete education
+6.  **📊 Append Results to Google Sheets**:
 
-5. **Validate JSON Output**
+      * Writes the structured data into a Google Sheet with the following columns: `Name`, `Email`, `University Name`, `University Completed`, `Years of Experience`, `Score`, `Reason`, and `File Name`.
 
-   * Uses a `Switch` + `Code` node to ensure Gemini output is **valid JSON**.
-   * Cleans response if needed.
+7.  **🔄 Loop & Retry Mechanisms**:
 
-6. **Append Results to Google Sheets**
+      * Includes **Wait** and **Split In Batches** nodes to handle multiple resumes and prevent API errors through intelligent retries.
 
-   * Appends candidate results into a Google Sheet with columns:
-
-     * Name
-     * Email
-     * University Name
-     * University Completed
-     * Years of Experience
-     * Score
-     * Reason (Justification)
-     * File Name
-
-7. **Loop & Retry Mechanisms**
-
-   * Several **Wait** and **Split In Batches** nodes handle multiple resumes and retries to avoid API errors.
-
----
-
-## 📊 Google Sheets Output Format
-
-| Name     | Email                                       | University Name | University Completed | Years of Experience | Score | Reason                                      | File Name           |
-| -------- | ------------------------------------------- | --------------- | -------------------- | ------------------- | ----- | ------------------------------------------- | ------------------- |
-| John Doe | [john@example.com](mailto:john@example.com) | Example University | Yes                  | 6                   | 78    | Lost points due to missing MLOps experience | Resume\_JohnDoe.pdf |
-
----
+-----
 
 ## 🔑 Credentials Needed
 
-* **Google Drive OAuth2** → Access resumes stored in Drive.
-* **Google Sheets OAuth2** → Write candidate results into Sheets.
-* **Google Gemini (PaLM API)** → AI model for document parsing and scoring.
+  * **Google Drive OAuth2** → To access resumes stored in your Drive.
+  * **Google Sheets OAuth2** → To write candidate results into your Sheet.
+  * **Google Gemini (PaLM API)** → To use the AI model for parsing and scoring.
 
----
+-----
 
 ## 🛠️ Nodes Used
 
-* **Manual Trigger** → Starts workflow manually.
-* **Google Drive** → Search & download resumes.
-* **Split in Batches** → Loop through multiple resumes.
-* **Google Gemini** → Resume analysis & scoring.
-* **Switch** → Check JSON validity.
-* **Code Node** → Parse & clean AI output.
-* **Google Sheets** → Append results to spreadsheet.
-* **Wait Nodes** → Prevent API overload, handle retries.
+  * **Manual Trigger**
+  * **Google Drive**
+  * **Split in Batches**
+  * **Google Gemini**
+  * **Switch**
+  * **Code Node**
+  * **Google Sheets**
+  * **Wait Nodes**
 
----
+-----
 
 ## 🚀 Usage Instructions
 
-1. **Set up credentials**:
+1.  **Set Up Credentials**:
 
-   * Connect your **Google Drive**, **Google Sheets**, and **Gemini API** accounts in n8n.
+      * Connect your **Google Drive**, **Google Sheets**, and **Gemini API** accounts in n8n.
 
-2. **Update configuration**:
+2.  **Update Configuration**:
 
-   * Replace the **Google Drive Folder URL** in `Search files and folders` node with your resume folder.
-   * Replace the **Google Sheets document ID** in `Append row in sheet1` node with your results sheet.
+      * In the `Search files and folders` node, replace the placeholder URL with your **Google Drive Folder URL**.
+      * In the `Append row in sheet1` node, replace the placeholder ID with your **Google Sheets document ID**.
 
-3. **Run the workflow**:
+3.  **Run the Workflow**:
 
-   * Upload resumes (PDF/DOCX) into the configured Google Drive folder.
-   * Click **Execute Workflow** in n8n.
-   * Candidate scores will appear in Google Sheets.
+      * Upload resumes (PDF/DOCX) into your configured Google Drive folder.
+      * Click **Execute Workflow** in n8n and watch the candidate scores appear in your Google Sheet.
 
----
+-----
 
 ## ⚖️ Scoring Philosophy
 
-This workflow is **strict and stingy with points**.
-Candidates typically lose points if:
+This workflow is designed to be **strict and stingy with points**. Candidates are likely to lose points if:
 
-* Their projects are not directly related to AI/ML.
-* They lack deployment/MLOps knowledge.
-* They studied outside the **preferred universities** list.
-* Their resume has poor grammar or design.
+  * Their projects are not directly related to AI/ML.
+  * They lack practical deployment or MLOps knowledge.
+  * They studied at universities outside the **preferred list**.
+  * Their resume suffers from poor grammar or unprofessional design.
 
----
+-----
 
 ## 📌 Notes
 
-* The **preferred university list** includes BRAC, BUET, Dhaka University, NSU, SUST, and others.
-* Resumes **not completed by July 2025** automatically lose **10 points**.
-* JSON parsing is enforced, ensuring **clean structured output** every time.
+  * Resumes indicating a graduation date **later than July 2025** will automatically lose **10 points**.
+  * JSON parsing is strictly enforced to ensure **clean, structured output** every time.
 
----
+-----
 
 ## 🗂️ Example Workflow Applications
 
-* **University HR teams** screening AI Engineer applicants.
-* **Recruitment agencies** handling large candidate pools.
-* **Startups** automating early-stage technical hiring.
-
+  * **University HR teams** screening AI Engineer applicants.
+  * **Recruitment agencies** managing large candidate pools.
+  * **Startups** automating their early-stage technical hiring process.
